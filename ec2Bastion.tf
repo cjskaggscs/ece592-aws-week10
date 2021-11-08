@@ -39,15 +39,3 @@ resource "aws_security_group" "week10-ssh-sg" {
   }
 }
 
-# Create the VM
-resource "aws_instance" "week10-bastion-vm" {
-  ami                    = "ami-02e136e904f3da870"
-  instance_type          = "t2.micro"
-  subnet_id              = aws_subnet.week10-sub-a.id
-  vpc_security_group_ids = [aws_security_group.week10-ssh-sg.id]
-  key_name               = "ECE592a_skaggsc"
-
-  tags = {
-    Name = "week10-bastion-vm"
-  }
-}
